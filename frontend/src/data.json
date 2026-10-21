@@ -1,0 +1,67 @@
+{
+    "lists": [
+        {
+            "name": "Movies",
+            "entries": [
+                {
+                    "name": "Star Wars: A New Hope",
+                    "costume-design": 5,
+                    "acting-performance": 9,
+                    "music": 10
+                },
+                {
+                    "name": "Terminator",
+                    "costume-design": 6,
+                    "acting-performance": 8,
+                    "music": 9
+                }
+            ]
+        },
+        {
+            "name": "Books",
+            "entries": [
+                {
+                    "name": "Lord of The Rings",
+                    "characters": 5,
+                    "entertainment-value": 9,
+                    "worldbuilding": 10
+                },
+                {
+                    "name": "Harry Potter",
+                    "characters": 9,
+                    "entertainment-value": 8,
+                    "worldbuilding": 6
+                }
+            ]
+        },
+        {
+            "name": "Travel Destinations",
+            "entries": [
+                {
+                    "name": "France",
+                    "culture": 7,
+                    "architecture": 9,
+                    "food": 6,
+                    "safeness-level": 8,
+                    "cost-level": 9
+                },
+                {
+                    "name": "Japan",
+                    "culture": 9,
+                    "architecture": 9,
+                    "food": 10,
+                    "safeness-level": 10,
+                    "cost-level": 6
+                },
+                {
+                    "name": "Italy",
+                    "culture": 8,
+                    "architecture": 10,
+                    "food": 10,
+                    "safeness-level": 7,
+                    "cost-level": 7
+                }
+            ]
+        }
+    ]
+}
