@@ -21,42 +21,14 @@
 
     <main>
         <section id="list-table">
-            <h2>Movies</h2>
+            <h2 id="list-title"></h2>
             <table class="list-table">
                 <thead class="list-table-head">
                     <tr>
                         <th>Name</th>
-                        <th>Costume Design</th>
-                        <th>Acting Performance</th>
-                        <th>Music</th>
                     </tr>
                 </thead>
-                <tbody class="list-table-body">
-                    <tr>
-                        <th>Star Wars: A New Hope</th>
-                        <td>5</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>
-                            <button class="edit-list-entry-button">
-                                edit
-                            </button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th>Terminator</th>
-                        <td>6</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>
-                            <button class="edit-list-entry-button">
-                                edit
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-
+                <tbody class="list-table-body"></tbody>
             </table>
         </section>
     </main>
@@ -68,3 +40,76 @@
 
 </body>
 </html>
+
+<script>
+    async function loadTestData() {
+        try {
+            const data = (await fetch('/data.json')).json();
+            console.log(data);
+            return data;
+        } catch (error) {
+            console.error('loading test data failed', error);
+            return { lists: []};
+        }
+    }
+
+    async function populateListView() {
+            const urlParams = new URLSearchParams(window.location.search);
+            console.log('URL:', window.location.href);
+            console.log('Params:', urlParams.toString());
+            console.log('ID:', urlParams.get('id'))
+            const id = urlParams.get('id');
+            console.log(id);
+
+            if (!id) {
+                document.getElementById('list-title').textContent = 'No list selected';
+                return;
+            }
+
+            const data = await loadTestData();
+            const list = data.lists.find(l => l.id == id);
+
+            if (!list) {
+                document.getElementById('list-title').textContent = 'List not found';
+                return;
+            }
+
+            document.getElementById('list-title').textContent = list.name;
+
+            const entryKeys = Object.keys(list.entries[0]).filter(k => k !== 'id');
+            const headerRow = document.querySelector('.list-table-head tr');
+            headerRow.innerHTML = '<th>Name</th>';
+            entryKeys.forEach(key => {
+                const th = document.createElement('th');
+                th.textContent = key.replace('-', ' ');
+                headerRow.appendChild(th);
+            });
+
+            const tbody = document.querySelector('.list-table-body');
+            tbody.innerHTML = '';
+
+            list.entries.forEach(entry => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <th>${entry.name}</th>
+                `;
+
+                entryKeys.forEach(key => {
+                    const td = document.createElement('td');
+                    td.textContent = entry[key];
+                    tr.appendChild(td);
+                });
+
+                const editCell = document.createElement('td');
+                const editBtn = document.createElement('button');
+                editBtn.className = 'edit-list-entry-button';
+                editBtn.textContent = 'edit';
+                editCell.appendChild(editBtn);
+                tr.appendChild(editCell);
+
+                tbody.appendChild(tr);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', populateListView);
+</script>
