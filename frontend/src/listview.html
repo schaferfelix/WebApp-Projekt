@@ -55,11 +55,7 @@
 
     async function populateListView() {
             const urlParams = new URLSearchParams(window.location.search);
-            console.log('URL:', window.location.href);
-            console.log('Params:', urlParams.toString());
-            console.log('ID:', urlParams.get('id'))
             const id = urlParams.get('id');
-            console.log(id);
 
             if (!id) {
                 document.getElementById('list-title').textContent = 'No list selected';
@@ -84,6 +80,8 @@
                 th.textContent = key.replace('-', ' ');
                 headerRow.appendChild(th);
             });
+            const th = document.createElement('th');
+            headerRow.appendChild(th);
 
             const tbody = document.querySelector('.list-table-body');
             tbody.innerHTML = '';
