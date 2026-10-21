@@ -25,7 +25,6 @@
             <table class="list-table">
                 <thead class="list-table-head">
                     <tr>
-                        <th>Name</th>
                     </tr>
                 </thead>
                 <tbody class="list-table-body"></tbody>
@@ -74,7 +73,6 @@
 
             const entryKeys = Object.keys(list.entries[0]).filter(k => k !== 'id');
             const headerRow = document.querySelector('.list-table-head tr');
-            headerRow.innerHTML = '<th>Name</th>';
             entryKeys.forEach(key => {
                 const th = document.createElement('th');
                 th.textContent = key.replace('-', ' ');
@@ -88,9 +86,6 @@
 
             list.entries.forEach(entry => {
                 const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <th>${entry.name}</th>
-                `;
 
                 entryKeys.forEach(key => {
                     const td = document.createElement('td');
