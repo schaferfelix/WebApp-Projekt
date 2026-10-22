@@ -32,6 +32,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
+    text-transform: uppercase;
 }
 
 .site-header a {
