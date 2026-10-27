@@ -20,6 +20,18 @@ body {
     min-height: 100vh;
 }
 
+body::after {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+    background-size: 100% 4px; /* Adjust thickness of scanlines */
+    z-index: 9999;
+    pointer-events: none; /* Allows click-throughs */
+    opacity: 0.3;
+}
+
 /* Site Header Styling */
 .site-header {
     display: flex;
@@ -41,10 +53,10 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     transition: color 0.3s ease;
-}
-
-.site-header a:hover {
-    color: #2980b9;
+    text-shadow: 
+        0 0 2px rgba(255, 8, 0, 0.9),
+        0 0 8px rgba(255, 8, 0, 0.6),
+        0 0 20px rgba(255, 8, 0, 0.3);
 }
 
 .site-header nav ul {
@@ -60,10 +72,6 @@ body {
     transition: color 0.3s ease;
 }
 
-.site-header nav a:hover {
-    color: #3498db;
-}
-
 /* Main Content Styling */
 main {
     max-width: 1200px;
@@ -77,9 +85,13 @@ h1, h2, h3 {
 }
 
 h1 {
+    color: rgb(223, 223, 223);
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 1rem;
+    text-shadow: 
+        0 0 2px rgba(231, 231, 231, 0.9),
+        0 0 8px rgba(221, 221, 221, 0.6);
 }
 
 h2 {
@@ -92,21 +104,30 @@ h2 {
 .welcome-message {
     text-align: center;
     font-size: 1.2rem;
-    color: white;
+    color: rgb(226, 226, 226);
     margin-bottom: 2rem;
+    text-shadow: 
+        0 0 2px rgba(231, 231, 231, 0.9),
+        0 0 8px rgba(221, 221, 221, 0.6);
 }
 
 /* Lists Display */
-#my-lists .lists-display {
+#featured-lists .lists-display {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+#my-lists .lists-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(800px, 1fr));
     gap: 1.5rem;
 }
 
 .list-element {
     background-color: transparent;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .list-element:hover {
@@ -114,15 +135,25 @@ h2 {
 }
 
 .list-element h3 {
-    color: #efbe0f;
+    color: #ec7420;
     padding: 1rem;
     margin: 0;
     font-size: 1.3rem;
-    border: 5px solid #efbe0f;
+    border: 2px solid #ec7420;
+    clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px));
+    background-clip: padding-box;
+    text-shadow: 
+        0 0 2px rgba(255, 85, 0, 0.9),
+        0 0 8px rgba(255, 85, 0, 0.6),
+        0 0 20px rgba(255, 85, 0, 0.3);
+    box-shadow:
+        0 0 4px rgba(255, 85, 0, 0.9),
+        inset 0 0 12px rgba(255, 85, 0, 0.6),
+        0 0 25px rgba(255, 85, 0, 0.3);
 }
 
 .list-element a {
-    color: #efbe0f;
+    color: #ec7420;
     text-decoration: none;
     text-transform: uppercase;
     display: block;
@@ -268,6 +299,11 @@ h2 {
         font-size: 2rem;
     }
 
+    #featured-lists .lists-display {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
     #my-lists .lists-display {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 1rem;
@@ -295,7 +331,7 @@ h2 {
         font-size: 1.7rem;
     }
 
-    #my-lists .lists-display {
+    #featured-lists .lists-display {
         grid-template-columns: 1fr;
     }
 

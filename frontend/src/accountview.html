@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Creator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <a href="homeview.html">LIST CREATOR</a>
+        <nav aria-label="Navigation">
+            <ul>
+                <li><a href="accountview.html">My Lists</a></li>
+                <li><a href="sign-in.html">Sign in</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="my-lists">
+            <h2>My LISTS</h2>
+            <ul class="lists-display">
+                
+            </ul>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>List Creator · A Schäfer project</p>
+    </footer>
+
+</body>
+</html>
+
+<script>
+    async function loadTestData() {
+        try {
+            const data = (await fetch('/data.json')).json();
+            return data;
+        } catch (error) {
+            console.error('loading test data failed', error);
+            return { lists: [], users: [] };
+        }
+    }
+
+    async function populateLists() {
+        const data = await loadTestData();
+        const myLists = document.getElementById('my-lists');
+
+        if (!myLists) return;
+
+        const listsDisplay = document.querySelector('.lists-display');
+        if (!listsDisplay) return;
+
+        listsDisplay.innerHTML = '';
+
+        data.lists.forEach(list => {
+            const listElement = document.createElement('li');
+            listElement.className = 'list-element';
+            listElement.innerHTML = `
+            <h3><a href="listview.html?id=${list.id}">${list.name}</a></h3>
+            `;
+            listsDisplay.appendChild(listElement);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', populateLists);
+</script>
