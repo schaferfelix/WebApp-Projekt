@@ -72,6 +72,46 @@ body::after {
     transition: color 0.3s ease;
 }
 
+.search-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: 'Times New Roman';
+}
+
+.search-label {
+    color: #be0817;
+    font-size: 0.55rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 
+        0 0 2px rgba(255, 8, 0, 0.9),
+        0 0 8px rgba(255, 8, 0, 0.6),
+        0 0 20px rgba(255, 8, 0, 0.3);
+}
+
+.search-bar-input {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  outline: none;
+  
+  border: 1px solid #be0817;
+  color: #be0817;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 1rem;
+  width: 250px;
+  
+  transition: all 0.2s ease-in-out;
+
+  box-shadow: 
+        0 0 2px rgba(255, 8, 0, 0.9),
+        0 0 8px rgba(255, 8, 0, 0.6),
+        0 0 20px rgba(255, 8, 0, 0.3);
+}
+
 /* Main Content Styling */
 main {
     max-width: 1200px;
@@ -160,10 +200,6 @@ h2 {
     text-align: center;
     padding: 1rem;
     font-weight: 500;
-}
-
-.list-element a:hover {
-    background-color: #5e7280;
 }
 
 .create-list-button {
