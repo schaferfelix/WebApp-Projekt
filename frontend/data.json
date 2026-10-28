@@ -3,6 +3,7 @@
         {
             "id": 1,
             "name": "Movies",
+            "public": true,
             "entries": [
                 {
                     "id": 101,
@@ -23,6 +24,7 @@
         {
             "id": 2,
             "name": "Books",
+            "public": true,
             "entries": [
                 {
                     "id": 201,
@@ -43,6 +45,7 @@
         {
             "id": 3,
             "name": "Travel Destinations",
+            "public": true,
             "entries": [
                 {
                     "id": 301,
