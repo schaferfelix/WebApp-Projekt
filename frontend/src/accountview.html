@@ -69,6 +69,7 @@
             listElement.className = 'list-element';
             listElement.innerHTML = `
             <h3><a href="listview.html?id=${list.id}">${list.name}</a></h3>
+            <button class="make-list-public-button" data-list-id="${list.id}">MAKE PUBLIC</button>
             `;
             listsDisplay.appendChild(listElement);
         });

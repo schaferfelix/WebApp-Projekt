@@ -170,8 +170,10 @@ h2 {
     transition: transform 0.3s ease;
 }
 
-.list-element:hover {
-    transform: translateY(-5px);
+#my-lists .list-element {
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    gap: 1rem;
 }
 
 .list-element h3 {
@@ -192,6 +194,14 @@ h2 {
         0 0 25px rgba(255, 85, 0, 0.3);
 }
 
+.list-element h3:hover {
+    border-color: #00FF33;
+    box-shadow:
+        0 0 4px rgba(0, 255, 51, 0.9),
+        inset 0 0 12px rgba(0, 255, 51, 0.6),
+        0 0 25px rgba(0, 255, 51, 0.3);
+}
+
 .list-element a {
     color: #ec7420;
     text-decoration: none;
@@ -200,6 +210,33 @@ h2 {
     text-align: center;
     padding: 1rem;
     font-weight: 500;
+}
+
+.make-list-public-button {
+    background-color: transparent;
+    color: #ec7420;
+    border: 2px solid #ec7420;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    text-shadow: 
+        0 0 2px rgba(255, 85, 0, 0.9),
+        0 0 8px rgba(255, 85, 0, 0.6),
+        0 0 20px rgba(255, 85, 0, 0.3);
+    box-shadow:
+        0 0 4px rgba(255, 85, 0, 0.9),
+        inset 0 0 12px rgba(255, 85, 0, 0.6),
+        0 0 25px rgba(255, 85, 0, 0.3);
+}
+
+.make-list-public-button:hover {
+    border-color: #00FF33;
+    box-shadow:
+        0 0 4px rgba(0, 255, 51, 0.9),
+        inset 0 0 12px rgba(0, 255, 51, 0.6),
+        0 0 25px rgba(0, 255, 51, 0.3);
 }
 
 .create-list-button {
