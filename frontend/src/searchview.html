@@ -67,6 +67,7 @@
             const listElement = document.createElement('li');
             listElement.className = 'list-element';
             listElement.innerHTML = `
+            <button class="make-list-public-button" data-list-id="${list.id}">USER: Alice</button>
             <h3><a href="listview.html?id=${list.id}">${list.name}</a></h3>
             `;
             listsDisplay.appendChild(listElement);
