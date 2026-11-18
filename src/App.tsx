@@ -1,42 +1,36 @@
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 
+import Header from './components/Header'
+import Footer from './components/Footer'
+
+import HomeView from './pages/HomeView'
+import SignInView from './pages/SignInView'
+import AccountView from './pages/AccountView'
+import ListView from './pages/ListView'
+import NewListView from './pages/NewListView'
+import SearchResultsView from './pages/SearchResultsView'
+
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-        <header className="site-header">
-            <a href="homeview.html">LIST CREATOR</a>
-            <form className="search-bar" id="search-form">
-                <div className="search-label">SEARCH PUBLIC LISTS</div>
-                <input type="text" className="search-bar-input" id="search-input" placeholder="AWAITING INPUT..." />
-            </form>
-            <nav aria-label="Navigation">
-                <ul>
-                    <li><a href="accountview.html">My Lists</a></li>
-                    <li><a href="sign-in.html">Sign in</a></li>
-                </ul>
-            </nav>
-        </header>
+        <BrowserRouter>
+            <Header/>
 
-        <main>
+            <main>
+                <Routes>
+                    <Route path="/" element={<HomeView/>} />
+                    <Route path="/sign-in" element={<SignInView/>} />
+                    <Route path="/account" element={<AccountView/>} />
+                    <Route path="/list/:id" element={<ListView/>} />
+                    <Route path="/new-list" element={<NewListView/>} />
+                    <Route path="/search" element={<SearchResultsView/>} />
+                </Routes>
+            </main>
 
-            <h1>Welcome to List Creator</h1>
-            <p className="welcome-message"> Create fully customizable Lists, track whatever you want!</p>
-
-            <section id="featured-lists">
-                <h2>FEATURED LISTS</h2>
-                <ul className="lists-display">
-                    
-                </ul>
-            </section>
-
-        </main>
-
-        <footer className="site-footer">
-            <p>List Creator · A Schäfer project</p>
-        </footer>
+            <Footer/>
+        </BrowserRouter>
     </>
   )
 }
