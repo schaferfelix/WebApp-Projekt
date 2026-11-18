@@ -1,98 +1,136 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* Farben */
+  --bg-main: #454d59;
+  --bg-header: #0b0b0b;
+  --bg-footer: #2c3e50;
+  --text-footer: #ecf0f1;
+  --text-light: rgb(223, 223, 223);
+  --text-welcome: rgb(226, 226, 226);
+  --hover-slate: #5e7280;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --neon-red: #be0817;
+  --neon-orange: #ec7420;
+  --neon-green: #00FF33;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Wiederkehrende Neon-Glow-Effekte */
+  --glow-red:
+    0 0 2px rgba(255, 8, 0, 0.9),
+    0 0 8px rgba(255, 8, 0, 0.6),
+    0 0 20px rgba(255, 8, 0, 0.3);
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --glow-orange-text:
+    0 0 2px rgba(255, 85, 0, 0.9),
+    0 0 8px rgba(255, 85, 0, 0.6),
+    0 0 20px rgba(255, 85, 0, 0.3);
+
+  --glow-orange-box:
+    0 0 4px rgba(255, 85, 0, 0.9),
+    inset 0 0 12px rgba(255, 85, 0, 0.6),
+    0 0 25px rgba(255, 85, 0, 0.3);
+
+  --glow-green-text:
+    0 0 2px rgba(0, 255, 51, 0.9),
+    0 0 8px rgba(0, 255, 51, 0.6),
+    0 0 20px rgba(0, 255, 51, 0.3);
+
+  --glow-green-box:
+    0 0 4px rgba(0, 255, 51, 0.9),
+    inset 0 0 12px rgba(0, 255, 51, 0.6),
+    0 0 25px rgba(0, 255, 51, 0.3);
+
+  --glow-white:
+    0 0 2px rgba(231, 231, 231, 0.9),
+    0 0 8px rgba(221, 221, 221, 0.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
+body,
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 body {
-  margin: 0;
+  font-family: 'Times New Roman';
+  font-variant: small-caps;
+  line-height: 1.6;
+  color: black;
+  background-color: var(--bg-main);
+}
+
+/* CRT-Scanline-Overlay */
+body::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* Main Content Styling */
+main {
+  flex: 1;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
 h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+h2,
+h3 {
+  color: black;
+  margin-bottom: 1rem;
 }
 
 h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+  color: var(--text-light);
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: var(--glow-white);
 }
+
 h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+  font-size: 2rem;
+  border-bottom: 2px solid black;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.welcome-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--text-welcome);
+  margin-bottom: 2rem;
+  text-shadow: var(--glow-white);
+}
+
+/* Globale Responsive-Anpassungen */
+@media (max-width: 768px) {
+  main {
+    padding: 0 0.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
   }
 }
-p {
-  margin: 0;
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.7rem;
+  }
 }
-
-

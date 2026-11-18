@@ -1,0 +1,98 @@
+#my-lists .lists-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(800px, 1fr));
+  gap: 1.5rem;
+}
+
+.list-element {
+  background-color: transparent;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+#my-lists .list-element {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  gap: 1rem;
+}
+
+.list-element h3 {
+  color: var(--neon-orange);
+  padding: 1rem;
+  margin: 0;
+  font-size: 1.3rem;
+  border: 2px solid var(--neon-orange);
+  clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px));
+  background-clip: padding-box;
+  text-shadow: var(--glow-orange-text);
+  box-shadow: var(--glow-orange-box);
+}
+
+.list-element h3:hover {
+  border-color: var(--neon-green);
+  box-shadow: var(--glow-green-box);
+}
+
+.list-element a {
+  color: var(--neon-orange);
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block;
+  text-align: center;
+  padding: 1rem;
+  font-weight: 500;
+}
+
+.make-list-public-button {
+  background-color: transparent;
+  color: var(--neon-orange);
+  border: 2px solid var(--neon-orange);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+  text-shadow: var(--glow-orange-text);
+  box-shadow: var(--glow-orange-box);
+}
+
+.make-list-public-button:hover {
+  border-color: var(--neon-green);
+  box-shadow: var(--glow-green-box);
+}
+
+.create-list-button {
+  width: 20%;
+  text-align: center;
+  margin-top: 10px;
+  background-color: transparent;
+  color: var(--neon-green);
+  border: 2px solid var(--neon-green);
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-shadow: var(--glow-green-text);
+  box-shadow: var(--glow-green-box);
+}
+
+.create-list-button a {
+  text-decoration: none;
+  color: var(--neon-green);
+}
+
+@media (max-width: 768px) {
+  #featured-lists .lists-display,
+  #my-lists .lists-display {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #featured-lists .lists-display {
+    grid-template-columns: 1fr;
+  }
+}

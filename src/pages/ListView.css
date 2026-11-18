@@ -1,0 +1,45 @@
+#list-table {
+  background-color: var(--bg-main);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.list-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.list-table-head th {
+  background-color: black;
+  color: var(--neon-red);
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.list-table-body td,
+.list-table-body th {
+  padding: 1rem;
+  border-bottom: 1px solid black;
+}
+
+.list-table-body tr:hover {
+  background-color: #f0f7ff;
+}
+
+.edit-list-entry-button {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.edit-list-entry-button:hover {
+  background-color: var(--hover-slate);
+}
