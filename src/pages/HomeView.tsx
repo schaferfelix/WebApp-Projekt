@@ -1,4 +1,4 @@
-import './SignInView.css'
+import './HomeView.css'
 
 import FeaturedLists from '../components/FeaturedLists';
 
