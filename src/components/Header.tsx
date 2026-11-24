@@ -31,7 +31,7 @@ function Header() {
 
             <nav aria-label="Navigation">
                 <ul>
-                    <li><Link to="/my-lists">My Lists</Link></li>
+                    <li><Link to="/account">My Lists</Link></li>
                     <li><Link to="/sign-in">Sign in</Link></li>
                 </ul>
             </nav>
