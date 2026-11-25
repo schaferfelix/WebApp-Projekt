@@ -2,7 +2,7 @@ import { useState, type SyntheticEvent } from 'react';
 import { useNavigate } from 'react-router-dom'
 import './NewListView.css'
 
-import type { Criterion, ListEntry, ListItem } from '../types/list';
+import type { Criterion, ListItem } from '../types/list';
 import CriterionGroup from '../components/CriterionGroup';
 
 function NewListView({ createList }: {createList: (newList: ListItem) => void}) {
