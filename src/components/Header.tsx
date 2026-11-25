@@ -9,7 +9,7 @@ function Header() {
         e.preventDefault();
         const trimmed = searchQuery.trim();
         if (trimmed) {
-            navigate(`/search`);
+            navigate(`/search?q=${encodeURIComponent(trimmed)}`);
         }
     };
 
