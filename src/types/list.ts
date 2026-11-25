@@ -9,5 +9,14 @@ export type ListItem = {
     name: string;
     public: boolean;
     creatorId: number;
+    criteria?: Criterion[];
     entries: ListEntry[];
+};
+
+export type CriterionType = 'rating' | 'text' | 'checkbox';
+
+export type Criterion = {
+  id: number;
+  name: string;
+  type: CriterionType;
 };

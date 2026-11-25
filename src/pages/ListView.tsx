@@ -6,19 +6,16 @@ import type { ListItem } from '../types/list';
 
 import ListTable from '../components/ListTable';
 
-function ListView() {
+function ListView({ lists }: {lists: ListItem[]}) {
     const { id } = useParams();
     const [list, setList] = useState<ListItem>();
 
     useEffect(() => {
-        async function laden() {
-            const antwort = await fetch("/ListsData.json");
-            if (!antwort.ok) throw new Error(`HTTP ${antwort.status}`);
-            const data = await antwort.json();
-            const listItem = data.lists.find((l: ListItem) => l.id === Number(id));
+        async function findListByID() {
+            const listItem = lists.find((l: ListItem) => l.id === Number(id));
             setList(listItem ?? undefined);
         }
-        laden();
+        findListByID();
     }, []);
 
     return (

@@ -7,9 +7,11 @@ function ListTable({list}: { list: ListItem | undefined }) {
         );
     }
 
-    const entryKeys = list.entries.length > 0
-    ? Object.keys(list.entries[0]).filter((k) => k !== 'id')
-    : [];
+    const entryKeys: string[] = list.criteria
+    ? ['name', ...list.criteria.map((c) => c.name)]
+    : list.entries.length > 0
+      ? Object.keys(list.entries[0]).filter((k) => k !== 'id')
+      : ['name'];
 
     return (
         <section id="list-table">

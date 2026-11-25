@@ -1,6 +1,8 @@
 import './SearchResultsView.css'
 
-function SearchResultsView() {
+import type { ListItem } from '../types/list';
+
+function SearchResultsView({ lists }: {lists: ListItem[]}) {
     return (
         <>
             <section id="search-results">

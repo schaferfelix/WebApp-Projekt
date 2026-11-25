@@ -1,36 +1,11 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import type { ListItem } from '../types/list';
-import ListsGrid from '../components/ListsGrid';
 import './AccountView.css'
 
-function AccountView() {
-    const [lists, setLists] = useState<ListItem[]>([])
+import type { ListItem } from '../types/list';
 
-    useEffect(() => {
-        async function loadLists() {
-            try {
-                const response = await fetch('/ListsData.json');
-                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+import ListsGrid from '../components/ListsGrid';
 
-                const data = await response.json();
-                setLists(data.lists);
-            } catch (error) {
-                console.error('Loading lists failed:', error);
-            }
-        }
-
-        loadLists();
-    }, []);
-
-    const handleTogglePublic = (id: number) => {
-        setLists((prev) =>
-            prev.map((list) =>
-                list.id === id ? { ...list, public: !list.public } : list
-            )
-        );
-    };
-
+function AccountView({ lists, togglePublicPrivate} : { lists: ListItem[], togglePublicPrivate: (id: number) => void }) {
     return (
         <>
             <section id="my-lists">
@@ -38,7 +13,7 @@ function AccountView() {
                 <ListsGrid
                     lists={lists}
                     showPublicToggle
-                    onTogglePublic={handleTogglePublic}
+                    onTogglePublic={togglePublicPrivate}
                 />
 
                 <div className="create-list-button">
